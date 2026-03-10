@@ -1,0 +1,16 @@
+wszystkie strkutury powinny zawiwrać operacje:
+add_last
+remove_last
+add_first
+remove_first
+add_on_position
+remove_position
+remove_on_place
+size, len
+is_empty
+connect
+
+oczywiście konstruktory kopiujace i przenoszące
+
+dostępność do danych powinna buć w postaci nawiasów kwadratowych
+struktury powinny buć w postaci template aby działały dla każdego typu danych
