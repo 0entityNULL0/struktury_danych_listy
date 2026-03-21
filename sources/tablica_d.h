@@ -26,7 +26,31 @@ public:
 	}
 	~tablica_dynamiczna()
 	{
-		delete dane;
+		if(dane!=nullptr) delete dane;
+	}
+	tablica_dynamiczna(tablica_dynamiczna<T> &&kopia)
+	{
+		unsigned int tmp = this->len;
+		this->len=kopia.size();
+		kopia.len=tmp;
+		unsigned int tmp = this->rezerwowany_len;
+		this->rezerwowany_len=kopia.size();
+		kopia.rezerwowany_len=tmp;
+		T* tmp2= this->dane;
+		this->dane = kopia->dane;
+		kopia->dane=tmp2;
+	}
+	tablica_dynamiczna& operator=(tablica_dynamiczna<T>&& other)
+	{
+		unsigned int tmp = this->len;
+		this->len=kopia.size();
+		kopia.len=tmp;
+		unsigned int tmp = this->rezerwowany_len;
+		this->rezerwowany_len=kopia.size();
+		kopia.rezerwowany_len=tmp;
+		T* tmp2= this->dane;
+		this->dane = kopia->dane;
+		kopia->dane=tmp2;
 	}
 	
 	tablica_dynamiczna(const tablica_dynamiczna<T> &kopia)
