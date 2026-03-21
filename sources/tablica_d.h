@@ -1,4 +1,9 @@
+
+#ifndef TABLICA_D_H
+#define TABLICA_D_H
+
 #include <utility>
+
 template <typename T> class tablica_dynamiczna
 {
 private:
@@ -33,19 +38,19 @@ public:
 		unsigned int tmp = this->len;
 		this->len=kopia.size();
 		kopia.len=tmp;
-		unsigned int tmp = this->rezerwowany_len;
+		tmp = this->rezerwowany_len;
 		this->rezerwowany_len=kopia.size();
 		kopia.rezerwowany_len=tmp;
 		T* tmp2= this->dane;
 		this->dane = kopia->dane;
 		kopia->dane=tmp2;
 	}
-	tablica_dynamiczna& operator=(tablica_dynamiczna<T>&& other)
+	tablica_dynamiczna& operator=(tablica_dynamiczna<T>&& kopia)
 	{
 		unsigned int tmp = this->len;
 		this->len=kopia.size();
 		kopia.len=tmp;
-		unsigned int tmp = this->rezerwowany_len;
+		tmp = this->rezerwowany_len;
 		this->rezerwowany_len=kopia.size();
 		kopia.rezerwowany_len=tmp;
 		T* tmp2= this->dane;
@@ -73,6 +78,7 @@ public:
 		{
 			this->dane[i]=kopia[i];
 		}
+		return *this;
 	}
 	unsigned int mem_size() const
 	{
@@ -233,3 +239,5 @@ public:
     T & operator [](int i) {return dane[i];}
 };
 
+
+#endif
