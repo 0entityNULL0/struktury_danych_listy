@@ -4,7 +4,7 @@ remove_last
 add_first
 remove_first
 add_on_position
-remove_position
+remove_on_position
 remove_on_place
 size, len
 is_empty

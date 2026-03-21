@@ -6,3 +6,8 @@ file(GLOB MAIN
 "main.cpp"
     )
     add_executable(testy ${MAIN})
+
+file(GLOB UNIT_TESTS
+"unit_testy.cpp"
+    )
+    add_executable(unit_testy ${UNIT_TESTS})
