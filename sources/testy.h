@@ -26,7 +26,7 @@ template <typename T,typename B> int testuj_add_first(T &struktura, B &dodawany_
 	
 	
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-	//delete kopie;
+	delete[] kopie;
 	delete kopie_dodawania;
 	return std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count();
 }
@@ -40,7 +40,7 @@ template <typename T,typename B> int testuj_add_last(T &struktura, B &dodawany_p
 	
 	
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-	//delete kopie;
+	delete[] kopie;
 	delete kopie_dodawania;
 	return std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count();
 }
@@ -63,7 +63,7 @@ template <typename T,typename B> int testuj_add_on_position(T &struktura,  B &do
 	}
 	
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-	//delete kopie;
+	delete[] kopie;
 	delete kopie_dodawania;
 	return std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count();
 }
@@ -76,7 +76,7 @@ template <typename T> int testuj_remove_first(T &struktura, unsigned int ile)
 	
 	
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-	//delete kopie;
+	delete[] kopie;
 	return std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count();
 }
 template <typename T> int testuj_remove_last(T &struktura, unsigned int ile)
@@ -88,7 +88,7 @@ template <typename T> int testuj_remove_last(T &struktura, unsigned int ile)
 	
 	
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-	//delete kopie;
+	delete[] kopie;
 	return std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count();
 }
 template <typename T> int testuj_remove_on_position(T &struktura, unsigned int ile)
@@ -106,7 +106,7 @@ template <typename T> int testuj_remove_on_position(T &struktura, unsigned int i
 	
 	
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-	//delete kopie;
+	delete[] kopie;
 	return std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count();
 }
 
