@@ -1,5 +1,6 @@
 //One way linked list with head only
-
+#ifndef TESTY_H
+#define TESTY_H
 #include <utility>
 
 template <typename T> class LinkedList{
@@ -147,7 +148,7 @@ private:
         }
     }
 
-    void addFirst (T val)
+    void add_first (T val)
     {
         if (this->head == nullptr)
         {
@@ -161,7 +162,7 @@ private:
         }
     }
 
-    void addAtPos (T val, long long int pos)
+    void add_on_position (T val, long long int pos)
     {
         if (this->isEmpty() && pos == 0)
         {
@@ -171,7 +172,7 @@ private:
 
         if (pos == 0)
         {
-            this->addFirst(val);
+            this->add_first(val);
             return;
         }
 
@@ -186,7 +187,7 @@ private:
         }
     }
 
-    long long int findValue(T val)//returns index, if not -1
+    long long int len (T val)//returns index, if not -1
     {
         long long int ind =0;
         if(this->head == nullptr ){return -1;}
@@ -200,5 +201,76 @@ private:
         }
         return -1;
     }
+
+    void remove_first()
+    {
+        if (this->isEmpty())
+            return;
+        Node *tmp = this->head;
+        this->head = this->head->next;
+        delete tmp;
+    }
+
+    void remove_last()
+    {
+        if (this->isEmpty())
+            return;
+        if (this->head->next == nullptr)
+        {
+            delete this->head;
+            this->head = nullptr;
+            return;
+        }
+        
+        Node *tmp = this->head;
+        Node *tmplast = this->getLast();
+        while(tmp->next != tmplast && tmp->next != nullptr)
+        {
+            tmp = tmp->next;
+        }
+        tmp->next = nullptr;
+        delete tmplast;
+        
+    }
+
+    void remove_at_pos(long long int pos)
+    {
+
+
+        if (this->isEmpty() || pos < 0)
+            return;
+   
+
+
+        if (pos == 0)
+        {
+            this->remove_first();
+            return;
+        }
+   
+     Node *tmp = this->getOnPossition(pos-1);
+
+        if(tmp == nullptr) return;
+
+        if (tmp->next == nullptr)
+        return;        
+
+        if (tmp->next->next == nullptr)
+        {
+            this->remove_last();
+            return;
+        }        
+        
+            
+            Node *tmp2 = tmp->next;
+            Node *tempgc = tmp->next;
+            tmp2 = tmp2->next;
+            tmp->next = tmp2;
+            delete tempgc;
+            
+        
+    }
 };
 
+
+#endif
