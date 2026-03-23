@@ -21,8 +21,7 @@ template <template  <typename> typename T> int testuj_poprawnosc_listy()
 	std::cout<<"#[INFO] testuje dodanie 1030 elementow metoda add_last po kolei od 0 do "<<rozmiar_testu-1<<"\n";
 	for(int i = 0; i<rozmiar_testu; i++)
 	{
-		int d=i;
-		lista.add_last(d);
+		lista.add_last(i);
 		for(int j = 0; j<=i; j++)
 		{
 			if(lista[j]!=j){

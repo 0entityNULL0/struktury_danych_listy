@@ -114,7 +114,7 @@ public:
 		nowa_tablica[0]=std::move(element);
 		len=nowy_len;
 		if(zmiana_tablicy==1)
-			delete dane;
+			delete[] dane;
 		dane=nowa_tablica;
 		return 0;
 		
@@ -130,7 +130,7 @@ public:
 			for(int i=0; i<len;i++)
 				nowa_tablica[i]=std::move(dane[i]); 
 			rezerwowany_len=nowy_rezerwowany_len;
-			delete dane;
+			delete[] dane;
 		}else nowa_tablica=dane;
 		nowa_tablica[len]=std::move(element);
 		len=nowy_len;
@@ -160,7 +160,7 @@ public:
 		for(int i=0; i<where;i++)
 			nowa_tablica[i]=std::move(dane[i]); 
 		len=nowy_len;
-		if(zmiana_tablicy==1) delete dane;
+		if(zmiana_tablicy==1) delete[] dane;
 		dane=nowa_tablica;
 		return 0;
 	}
@@ -179,7 +179,7 @@ public:
 		}else nowa_tablica=dane;
 		for(int i=0; i<nowy_len; i++)
 			nowa_tablica[i]=std::move(dane[i+1]);
-		if(zmiana_tablicy==1) delete dane;
+		if(zmiana_tablicy==1) delete[] dane;
 		dane=nowa_tablica;
 		len=nowy_len;
 		return usuwany_element;
@@ -198,7 +198,7 @@ public:
 			rezerwowany_len=rezerwowany_len/2;
 			for(int i=0; i<nowy_len; i++)
 				nowa_tablica[i]=std::move(dane[i]);
-			delete dane;
+			delete[] dane;
 			dane=nowa_tablica;
 		}
 		
@@ -229,13 +229,13 @@ public:
 			
 		len=nowy_len;
 		
-		if(zmiana_tablicy==1) delete dane;
+		if(zmiana_tablicy==1) delete[] dane;
 		
 		dane=nowa_tablica;
 		return usuwany_element;
 		
 	}
-	T operator [](int i) const    {return dane[i];}
+	T operator [](int i) const {return dane[i];}
     T & operator [](int i) {return dane[i];}
 };
 
