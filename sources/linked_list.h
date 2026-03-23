@@ -152,8 +152,8 @@ private:
         }
         else
         {
-        Node* tmplast = this->getLast();
-        tmplast->next = new Node(val);
+			Node* tmplast = this->getLast();
+			tmplast->next = new Node(val);
         }
         return 0;
     }
@@ -295,17 +295,17 @@ private:
 		Node* current = head;
 		for(int j = 0; j < i; j++)
 		{
-			current=head->next;
+			current=current->next;
 		}
-		return current.data;
+		return (current.data);
 	}
     T & operator [](int i) {
 		Node* current = head;
 		for(int j = 0; j < i; j++)
 		{
-			current=head->next;
+			current=current->next;
 		}
-			return current->data;
+			return (current->data);
 		}
 };
 

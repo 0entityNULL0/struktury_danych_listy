@@ -17,15 +17,16 @@ template <template  <typename> typename T> int testuj_poprawnosc_listy()
 {
 	const unsigned int rozmiar_testu=1030;
 	T <int> lista;
-	std::cout<<"len: "<<lista.size()<<", max_len: "<<lista.mem_size()<<"\n";
+	//std::cout<<"len: "<<lista.size()<<", max_len: "<<lista.mem_size()<<"\n";
 	std::cout<<"#[INFO] testuje dodanie 1030 elementow metoda add_last po kolei od 0 do "<<rozmiar_testu-1<<"\n";
 	for(int i = 0; i<rozmiar_testu; i++)
 	{
-		lista.add_last(i);
-		for(int j = 0; j<i; j++)
+		int d=i;
+		lista.add_last(d);
+		for(int j = 0; j<=i; j++)
 		{
 			if(lista[j]!=j){
-				std::cout<<"#[ERROR] dodawanie nie powiodlo sie: po dodaniu "<<j<<" elementu lita nie zgadza się\n";
+				std::cout<<"#[ERROR] dodawanie nie powiodlo sie: po dodaniu "<<j<<" elementu lista nie zgadza się\n";
 				wypisz_liste(lista);
 				return 1;
 			}
@@ -112,7 +113,7 @@ template <template  <typename> typename T> int testuj_poprawnosc_listy()
 			std::cout<<"#[ERROR] dodawanie nie powiodlo sie: pozycja dodawania "<<lista2.size()<<" jest nie odpowiednia dla listy o rozmiarze "<<lista2.size()<<"\n";
 		}
 		wektor.insert(wektor.begin()+pozycja,i);
-		for(int j = 0; j<i; j++)
+		for(int j = 0; j<=i; j++)
 		{
 			if(lista2[j]!=wektor[j]){
 				std::cout<<"#[ERROR] dodawanie nie powiodlo sie: po dodaniu "<<j<<" elementu lita nie zgadza się\n";
@@ -160,6 +161,7 @@ int main()
 	std::cout<<"#[INFO] testy tablicy dynamicznej\n";
 	if(testuj_poprawnosc_listy<tablica_dynamiczna>()==0)
 		std::cout<<"#[INFO] testy tablicy dynamicznej zakonczone sukcesem\n";
+	else return 0;
 		
 	std::cout<<"#[INFO] testy listy wiazanej\n";
 	if(testuj_poprawnosc_listy<LinkedList>()==0)
