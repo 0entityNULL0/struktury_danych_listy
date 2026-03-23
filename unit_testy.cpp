@@ -2,6 +2,7 @@
 #include <vector>
 #include <ctime>
 #include "tablica_d.h"
+#include "linked_list.h"
 template <typename T> void wypisz_liste(T &lista)
 {
 	std::cout<<"dlugosc listy: "<<lista.size()<<"\n";
@@ -159,6 +160,10 @@ int main()
 	std::cout<<"#[INFO] testy tablicy dynamicznej\n";
 	if(testuj_poprawnosc_listy<tablica_dynamiczna>()==0)
 		std::cout<<"#[INFO] testy tablicy dynamicznej zakonczone sukcesem\n";
+		
+	std::cout<<"#[INFO] testy listy wiazanej\n";
+	if(testuj_poprawnosc_listy<LinkedList>()==0)
+		std::cout<<"#[INFO] testy listy wiazanej zakonczone sukcesem\n";
 	else return 0;
 }
 

@@ -1,6 +1,6 @@
 //One way linked list with head only
-#ifndef TESTY_H
-#define TESTY_H
+#ifndef LINKED_LIST_H
+#define LINKED_LIST_H
 #include <utility>
 
 template <typename T> class LinkedList{
@@ -87,10 +87,10 @@ private:
         return this->head == nullptr;
     }
 
-    long long int len()
+    unsigned int len()
     {
         if(this->head == nullptr){return 0;}
-        long long int ln=1;
+        unsigned int ln=1;
         Node *tmp = this->head;
 
         while (tmp->next != nullptr)
@@ -100,6 +100,15 @@ private:
         }     
         return ln;
     }
+    unsigned int size()
+    {
+		return len();
+	}
+	
+    unsigned int mem_size()
+    {
+		return len();
+	}
 
     
     LinkedList& operator=(LinkedList<T>&& other)
@@ -135,7 +144,7 @@ private:
         return *this;     
     }
 
-    void addLast (T val)
+    int add_last (T val)
     {
         if (this->head == nullptr)
         {
@@ -146,9 +155,10 @@ private:
         Node* tmplast = this->getLast();
         tmplast->next = new Node(val);
         }
+        return 0;
     }
 
-    void add_first (T val)
+    int add_first (T val)
     {
         if (this->head == nullptr)
         {
@@ -160,23 +170,24 @@ private:
         tmpfirst->next = this->head;
         this->head = tmpfirst;
         }
+        return 0;
     }
 
-    void add_on_position (T val, long long int pos)
+    int add_on_position (T val, unsigned int pos)
     {
         if (this->isEmpty() && pos == 0)
         {
             this->head = new Node (val);
-            return;
+            return 0;
         }
 
         if (pos == 0)
         {
             this->add_first(val);
-            return;
+            return 0;
         }
 
-        if(this->getOnPossition(pos-1) == nullptr) return;
+        if(this->getOnPossition(pos-1) == nullptr) return -1;
         else
         {
             Node *tmp = this->getOnPossition(pos-1);
@@ -184,6 +195,7 @@ private:
             tmp->next = new Node(val);
             tmp = tmp->next;
             tmp-> next = tmp2;
+            return 0;
         }
     }
 
@@ -202,24 +214,27 @@ private:
         return -1;
     }
 
-    void remove_first()
+    T* remove_first()
     {
+		T* usuwany_element = new T;
         if (this->isEmpty())
-            return;
+            return nullptr;
         Node *tmp = this->head;
         this->head = this->head->next;
+        *usuwany_element=std::move(tmp->data);
         delete tmp;
+        return usuwany_element;
     }
 
-    void remove_last()
+    T* remove_last()
     {
         if (this->isEmpty())
-            return;
+            return nullptr;
         if (this->head->next == nullptr)
         {
             delete this->head;
             this->head = nullptr;
-            return;
+            return nullptr;
         }
         
         Node *tmp = this->head;
@@ -229,47 +244,69 @@ private:
             tmp = tmp->next;
         }
         tmp->next = nullptr;
+		T* usuwany_element = new T;
+        *usuwany_element=std::move(tmplast->data);
         delete tmplast;
+        return usuwany_element;
         
     }
 
-    void remove_at_pos(long long int pos)
+    T* remove_on_position(unsigned int pos)
     {
 
-
+		
+        
         if (this->isEmpty() || pos < 0)
-            return;
+            return nullptr;
    
 
 
         if (pos == 0)
         {
-            this->remove_first();
-            return;
+            return this->remove_first();
         }
    
      Node *tmp = this->getOnPossition(pos-1);
 
-        if(tmp == nullptr) return;
+        if(tmp == nullptr) return nullptr;
 
         if (tmp->next == nullptr)
-        return;        
+        return nullptr;        
 
         if (tmp->next->next == nullptr)
         {
-            this->remove_last();
-            return;
+            return this->remove_last();
         }        
         
             
+		T* usuwany_element = new T;
             Node *tmp2 = tmp->next;
             Node *tempgc = tmp->next;
             tmp2 = tmp2->next;
             tmp->next = tmp2;
+        *usuwany_element=std::move(tempgc->data);
             delete tempgc;
+        return usuwany_element;
             
         
     }
+    
+	T operator [](int i) const    {
+		Node* current = head;
+		for(int j = 0; j < i; j++)
+		{
+			current=head->next;
+		}
+		return current.data;
+	}
+    T & operator [](int i) {
+		Node* current = head;
+		for(int j = 0; j < i; j++)
+		{
+			current=head->next;
+		}
+			return current->data;
+		}
 };
 
 
