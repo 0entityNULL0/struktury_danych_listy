@@ -110,37 +110,50 @@ template <typename T> int testuj_remove_on_position(T &struktura, unsigned int i
 	return std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count();
 }
 
-template <template  <typename> typename T> void typowy_test(unsigned int ile,unsigned int rozmiar)
-{
-	T <int> tablica;
-	int dodaj=5;
-	
-	for(int i = 0; i<rozmiar;i++){
-		tablica.add_last(dodaj);
-	}
-	int czas;
-	std::cout<<"[INFO]test listy o rozmiarze "<<rozmiar<<" wyknoywany "<<ile<<" razy dla każdej operacji\n";
-	std::cout<<"[INFO]test add_first\n";
-	czas = testuj_add_first(tablica,dodaj,rozmiar);
-	std::cout<<"[INFO-WYNIK]czas wykonania operacji wyniusl "<<czas<<"ns\n";
-	std::cout<<"[INFO]test add_last\n";
-	czas = testuj_add_last(tablica,dodaj,rozmiar);
-	std::cout<<"[INFO-WYNIK]czas wykonania operacji wyniusl "<<czas<<"ns\n";
-	std::cout<<"[INFO]test add_on_position\n";
-	czas = testuj_add_on_position(tablica,dodaj,rozmiar);
-	std::cout<<"[INFO-WYNIK]czas wykonania operacji wyniusl "<<czas<<"ns\n";
-	std::cout<<"[INFO]test remove_first\n";
-	czas = testuj_remove_first(tablica,rozmiar);
-	std::cout<<"[INFO-WYNIK]czas wykonania operacji wyniusl "<<czas<<"ns\n";
-	std::cout<<"[INFO]test remove_last\n";
-	czas = testuj_remove_last(tablica,rozmiar);
-	std::cout<<"[INFO-WYNIK]czas wykonania operacji wyniusl "<<czas<<"ns\n";
-	std::cout<<"[INFO]test remove_on_position\n";
-	czas = testuj_remove_on_position(tablica,rozmiar);
-	std::cout<<"[INFO-WYNIK]czas wykonania operacji wyniusl "<<czas<<"ns\n";
-	std::cout<<"[INFO]koniec testu\n";
-	
-	
-}
+#include <iostream>
+#include <fstream>
+#include <string>
 
+template <template <typename> typename T> 
+void typowy_test(unsigned int ile, unsigned int rozmiar, std::string nazwa_struktury = "Struktura")
+{
+    T<int> tablica;
+    int dodaj = 5;
+    for(unsigned int i = 0; i < rozmiar; i++) tablica.add_last(dodaj);
+
+    long long af = testuj_add_first(tablica, dodaj, ile);
+    long long al = testuj_add_last(tablica, dodaj, ile);
+    long long ap = testuj_add_on_position(tablica, dodaj, ile);
+    long long rf = testuj_remove_first(tablica, ile);
+    long long rl = testuj_remove_last(tablica, ile);
+    long long rp = testuj_remove_on_position(tablica, ile);
+
+    double avg_af = (double)af / ile;
+    double avg_al = (double)al / ile;
+    double avg_ap = (double)ap / ile;
+    double avg_rf = (double)rf / ile;
+    double avg_rl = (double)rl / ile;
+    double avg_rp = (double)rp / ile;
+
+    std::ofstream plik("wyniki.csv", std::ios::app);
+    if (plik.is_open()) {
+        plik.seekp(0, std::ios::end);
+        if (plik.tellp() == 0) {
+            plik << "Type;Size;Reps;AddFirst;AddLast;AddPos;RemFirst;RemLast;RemPos\n";
+        }
+        
+        plik << nazwa_struktury << ";" 
+             << rozmiar << ";" 
+             << ile << ";" 
+             << avg_af << ";" 
+             << avg_al << ";" 
+             << avg_ap << ";" 
+             << avg_rf << ";" 
+             << avg_rl << ";" 
+             << avg_rp << "\n";
+        
+        plik.close();
+    }
+    std::cout << "[INFO] Zapisano: " << nazwa_struktury << " (n=" << rozmiar << ")" << std::endl;
+}
 #endif

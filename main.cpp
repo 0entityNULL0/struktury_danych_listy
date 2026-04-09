@@ -6,8 +6,8 @@
 int main()
 {
 	
-	typowy_test<tablica_dynamiczna>(1000000000,16);
-	typowy_test<LinkedList>(1000000000,16);
+typowy_test<tablica_dynamiczna>(1000, 16, "TablicaDynamiczna");
+typowy_test<LinkedList>(1000, 16, "ListaWiazana");
 	
 	return 0;
 }
