@@ -1,4 +1,3 @@
-
 #include "tablica_d.h"
 #include "testy.h"
 #include "linked_list.h"
