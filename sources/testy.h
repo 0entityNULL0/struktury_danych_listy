@@ -2,7 +2,8 @@
 #define TESTY_H
 #include <iostream>
 #include <chrono>
-
+#include <fstream>
+#include <string>
 #include <ctime>
 
 
@@ -110,9 +111,7 @@ template <typename T> int testuj_remove_on_position(T &struktura, unsigned int i
 	return std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count();
 }
 
-#include <iostream>
-#include <fstream>
-#include <string>
+
 
 template <template <typename> typename T> 
 void typowy_test(unsigned int ile, unsigned int rozmiar, std::string nazwa_struktury = "Struktura")
