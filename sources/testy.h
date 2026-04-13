@@ -125,7 +125,7 @@ void wykonaj_szukanie(tablica_dynamiczna<T> &t, B szukany) {
 
 template <typename T, typename B>
 void wykonaj_szukanie(LinkedList<T> &l, B szukany) {
-    l.len(szukany); 
+    l.find(szukany); 
 }
 
 template <typename T, typename B> int testuj_find(T &struktura, B szukany, unsigned int ile)
