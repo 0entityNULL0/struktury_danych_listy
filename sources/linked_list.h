@@ -199,7 +199,7 @@ private:
         }
     }
 
-    long long int len (T val)//returns index, if not -1
+    long long int find (T val)//returns index, if not -1
     {
         long long int ind =0;
         if(this->head == nullptr ){return -1;}
