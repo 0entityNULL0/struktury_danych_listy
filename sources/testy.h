@@ -158,13 +158,13 @@ void typowy_test(unsigned int ile, unsigned int rozmiar, std::string nazwa_struk
         plik << nazwa_struktury << ";" 
              << rozmiar << ";" 
              << ile << ";" 
-             << (double)af/ile << ";" 
-             << (double)al/ile << ";" 
-             << (double)ap/ile << ";" 
-             << (double)rf/ile << ";" 
-             << (double)rl/ile << ";" 
-             << (double)rp/ile << ";"
-             << (double)find_time/ile << "\n";
+             << af/ile << ";" 
+             << al/ile << ";" 
+             << ap/ile << ";" 
+             << rf/ile << ";" 
+             << rl/ile << ";" 
+             << rp/ile << ";"
+             << find_time/ile << "\n";
         
         plik.close();
     }
