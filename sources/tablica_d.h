@@ -235,6 +235,13 @@ public:
 		return usuwany_element;
 		
 	}
+	int find(T val)
+	{
+		for(unsigned int j = 0; j < len; j++) {
+			if(dane[j] == val) return j;
+		}
+		return -1;
+	}
 	T operator [](int i) const {return dane[i];}
     T & operator [](int i) {return dane[i];}
 };
