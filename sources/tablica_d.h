@@ -8,8 +8,8 @@ template <typename T> class tablica_dynamiczna
 {
 private:
 	T *dane;
-	unsigned int len;
-	unsigned int rezerwowany_len;
+	long long int len;
+	long long int rezerwowany_len;
 
 private:
 	
@@ -22,7 +22,7 @@ public:
 		rezerwowany_len=1;
 		dane=new T[1];
 	}
-	tablica_dynamiczna(unsigned int size)
+	tablica_dynamiczna(long long int size)
 	{
 		len=size;
 		rezerwowany_len=1;
@@ -31,11 +31,11 @@ public:
 	}
 	~tablica_dynamiczna()
 	{
-		if(dane!=nullptr) delete dane;
+		if(dane!=nullptr) delete[] dane;
 	}
 	tablica_dynamiczna(tablica_dynamiczna<T> &&kopia)
 	{
-		unsigned int tmp = this->len;
+		long long int tmp = this->len;
 		this->len=kopia.size();
 		kopia.len=tmp;
 		tmp = this->rezerwowany_len;
@@ -47,7 +47,7 @@ public:
 	}
 	tablica_dynamiczna& operator=(tablica_dynamiczna<T>&& kopia)
 	{
-		unsigned int tmp = this->len;
+		long long int tmp = this->len;
 		this->len=kopia.size();
 		kopia.len=tmp;
 		tmp = this->rezerwowany_len;
@@ -63,7 +63,7 @@ public:
 		this->len=kopia.size();
 		this->rezerwowany_len=kopia.mem_size();
 		this->dane = new T[rezerwowany_len];
-		for(int i = 0 ; i < rezerwowany_len; i++ )
+		for(long long int i = 0 ; i < rezerwowany_len; i++ )
 		{
 			this->dane[i]=kopia[i];
 		}
@@ -74,21 +74,21 @@ public:
 		this->len=kopia.size();
 		this->rezerwowany_len=kopia.mem_size();
 		this->dane = new T[rezerwowany_len];
-		for(int i = 0 ; i < rezerwowany_len; i++ )
+		for(long long int i = 0 ; i < rezerwowany_len; i++ )
 		{
 			this->dane[i]=kopia[i];
 		}
 		return *this;
 	}
-	unsigned int mem_size() const
+	long long int mem_size() const
 	{
 		return rezerwowany_len;
 	}
-	unsigned int size() const
+	long long int size() const
 	{
 		return len;
 	}
-	unsigned int is_empty() const
+	long long int is_empty() const
 	{
 		if(len==0)
 			return 1;
@@ -204,7 +204,7 @@ public:
 		
 		len=nowy_len;
 		return usuwany_element;}
-	T* remove_on_position(unsigned int where)
+	T* remove_on_position(long long int where)
 	{
 		unsigned int nowy_len=len-1;
 		
@@ -237,13 +237,13 @@ public:
 	}
 	int find(T val)
 	{
-		for(unsigned int j = 0; j < len; j++) {
+		for(long long int j = 0; j < len; j++) {
 			if(dane[j] == val) return j;
 		}
 		return -1;
 	}
-	T operator [](int i) const {return dane[i];}
-    T & operator [](int i) {return dane[i];}
+	T operator [](long long int i) const {return dane[i];}
+    T & operator [](long long int i) {return dane[i];}
 };
 
 

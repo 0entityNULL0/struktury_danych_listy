@@ -4,13 +4,13 @@
 
 int main() {
     
-    unsigned int rozmiary[] = {1000, 5000, 10000, 50000, 100000, 500000, 1000000};
-    unsigned int powtorzenia = 1000; 
+    long long int rozmiary[] = {1000, 5000, 10000, 50000, 100000, 500000,/* 1000000*/};
+    long long int powtorzenia = 1000; 
 
-    for(unsigned int n : rozmiary) {
+    for(long long int n : rozmiary) {
         std::cout << "Testuje rozmiar: " << n << std::endl;
         typowy_test<tablica_dynamiczna>(powtorzenia, n, "Tablica");
-        typowy_test<LinkedList>(powtorzenia, n, "Lista");
+        typowy_test_add_first<LinkedList>(powtorzenia, n, "Lista");
     }
 
     return 0;

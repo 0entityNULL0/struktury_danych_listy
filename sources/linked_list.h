@@ -100,12 +100,12 @@ private:
         }     
         return ln;
     }
-    unsigned int size()
+    long long int size()
     {
 		return len();
 	}
 	
-    unsigned int mem_size()
+    long long int mem_size()
     {
 		return len();
 	}
@@ -173,7 +173,7 @@ private:
         return 0;
     }
 
-    int add_on_position (T val, unsigned int pos)
+    int add_on_position (T val, long long int pos)
     {
         if (this->isEmpty() && pos == 0)
         {
@@ -251,7 +251,7 @@ private:
         
     }
 
-    T* remove_on_position(unsigned int pos)
+    T* remove_on_position(long long int pos)
     {
 
 		
@@ -291,7 +291,7 @@ private:
         
     }
     
-	T operator [](int i) const    {
+	T operator [](long long int i) const    {
 		Node* current = head;
 		for(int j = 0; j < i; j++)
 		{
@@ -299,9 +299,9 @@ private:
 		}
 		return (current.data);
 	}
-    T & operator [](int i) {
+    T & operator [](long long int i) {
 		Node* current = head;
-		for(int j = 0; j < i; j++)
+		for(long long int j = 0; j < i; j++)
 		{
 			current=current->next;
 		}
