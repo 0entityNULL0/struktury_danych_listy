@@ -115,7 +115,6 @@ template <typename T> int testuj_remove_on_position(T &struktura, unsigned int i
 }
 
 
-
 template <typename T> int testuj_find(T &struktura, unsigned int ile)
 {
 	
